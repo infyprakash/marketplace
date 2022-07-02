@@ -1,0 +1,5 @@
+git config core.autocrlf true
+
+stck = StockRecord.objects.filter(partner__id=1)
+
+token = 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

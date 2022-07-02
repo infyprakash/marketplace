@@ -1,0 +1,44 @@
+{% extends "oscar/layout.html" %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'Shop Settings' %} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{ homepage_url }}">{% trans 'Home' %}</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">{% trans 'shop settings' %}</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-4">
+        {% if user.is_authenticated %}
+        <p>Hello! {{user.email}}</p>
+        {% endif %}
+    </div>
+
+    <div class="col-sm-8">
+        <table class="table">
+            <tbody>
+                {% for shop in shops %}
+                <tr>
+                    <td>{{shop.name}}</td>
+                    <td><a href="/dashboard/partner/update/shop/{{shop.code}}" role="button" class="btn btn-warning">update</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,58 @@
+{% load display_tags %}
+{% load i18n %}
+{% load image_tags %}
+{% load reviews_tags %}
+{% load product_partner %}
+
+{% block product %}
+<div class="p-2">
+    <div class="card shadow text-center" style="width: 15rem;">
+        <div class="card-header">
+            product of: <a href="/at/{% render_partner product %}">{% render_partner_name product %}</a>
+          </div>
+          
+        {% block product_image %}
+            {% with image=product.primary_image %}
+                {% oscar_thumbnail image.original "x155" upscale=False as thumb %}
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{{ thumb.url }}" alt="{{ product.get_title }}" class="pt-2 w-auto mx-auto my-0 card-img-top">
+                </a>
+            {% endwith %}
+        {% endblock %}
+
+        <div class="card-body ">
+
+            {% block product_review %}
+            {% iffeature "reviews" %}
+                <p class="card-text star-rating {{ product.rating|as_stars }}">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </p>
+            {% endiffeature %}
+        {% endblock %}
+
+        {% block product_title %}
+        <h3 class="card-title mt-3">
+            <a href="{{ product.get_absolute_url }}" title="{{ product.get_title }}">
+                {{ product.get_title|truncatewords:4 }}
+            </a>
+        </h3>
+        {% endblock %}
+
+        {% block product_price %}
+        <div class="product_price w-100">
+            {% include "oscar/catalogue/partials/stock_record.html" %}
+            {% if not product.is_parent and not product.has_options %}
+                {% include "oscar/catalogue/partials/add_to_basket_form_compact.html" %}
+            {% endif %}
+        </div>
+    {% endblock %}
+
+        </div>
+
+      </div>
+</div>
+{% endblock %}
