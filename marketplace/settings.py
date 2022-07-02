@@ -144,7 +144,7 @@ DATABASES = {
         'USER': 'admin',
         'PASSWORD': 'InfograPHY',
         'HOST': '3.94.190.104',
-        'PORT': '5432',
+        'PORT': 5432,
    }
 }
 
