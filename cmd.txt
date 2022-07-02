@@ -2,4 +2,6 @@ git config core.autocrlf true
 
 stck = StockRecord.objects.filter(partner__id=1)
 
-token = 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
+sudo ssh ubuntu@3.94.190.104 -i ecom.pem
+
+token :  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
