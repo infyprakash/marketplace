@@ -143,7 +143,7 @@ DATABASES = {
         'NAME': 'ecomdb',
         'USER': 'admin',
         'PASSWORD': 'InfograPHY',
-        'HOST': 'InfograPHY',
+        'HOST': '3.94.190.104',
         'PORT': '5432',
    }
 }
