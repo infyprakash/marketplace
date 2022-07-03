@@ -2,9 +2,9 @@ git config core.autocrlf true
 
 stck = StockRecord.objects.filter(partner__id=1)
 
-sudo ssh ubuntu@3.94.190.104 -i ecom.pem
+sudo ssh ubuntu@52.37.157.83 -i myecom.pem
 
-token :  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
+token :  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
 
 git push --set-upstream origin main
 
