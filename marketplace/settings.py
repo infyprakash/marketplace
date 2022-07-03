@@ -130,23 +130,23 @@ WSGI_APPLICATION = 'marketplace.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'ecomdb',
-#         'USER': 'admin',
-#         'PASSWORD': 'InfograPHY',
-#         'HOST': '3.94.190.104',
-#         'PORT': 5432,
-#    }
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ecomdb',
+        'USER': 'admin',
+        'PASSWORD': 'InfograPHY',
+        'HOST': '52.37.157.83',
+        'PORT': 5432,
+   }
+}
 
 
 
