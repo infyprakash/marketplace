@@ -11,5 +11,5 @@ git push --set-upstream origin main
 
 postgres:
 role: admin
-password: InfograPHY
+password: InfograPHYVkxU6QwVqJuq64U2ru6Vf
 database: ecomdb

@@ -30,6 +30,7 @@ phonenumbers==8.12.49
 pickleshare==0.7.5
 Pillow==9.1.1
 prompt-toolkit==3.0.29
+psycopg2-binary==2.9.3
 pure-eval==0.2.2
 purl==1.6
 pycountry==22.3.5
