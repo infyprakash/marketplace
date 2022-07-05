@@ -10,6 +10,15 @@ git push --set-upstream origin main
 
 
 postgres:
-role: admin
+role: infography
 password: InfograPHYVkxU6QwVqJuq64U2ru6Vf
 database: ecomdb
+
+s3 bucket 
+bucket name: ecom-bucket-001
+
+IAM :
+user group: s3-full-access
+user: s3-admin
+
+access key : AKIA47ZNMRCTP66GBMEL
