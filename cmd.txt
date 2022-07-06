@@ -77,3 +77,12 @@ container_commands:
     leader_only: true
 
 
+CNAME name:
+
+_fd110d4ff860a28eab1fcea49b6224b6.connectopasal.com.
+
+CNAME value:
+
+_1fde9921a06189db22b0051d413b385a.tjztrygkxr.acm-validations.aws.
+
+
