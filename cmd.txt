@@ -77,4 +77,3 @@ container_commands:
     leader_only: true
 
 
-git config core.autocrlf true
