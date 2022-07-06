@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-@5isnv5dqm$nugv-o=jkr$u7-ldrw)w7^cyfa1+pl)d=i75f!b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['marketplace-dev.us-west-2.elasticbeanstalk.com','127.0.0.1']
+ALLOWED_HOSTS = ['marketplace-dev.us-west-2.elasticbeanstalk.com','127.0.0.1','connectopasal.com']
 
 
 # Application definition
@@ -154,14 +154,20 @@ if 'RDS_DB_NAME' in os.environ:
 else:
     DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'ecomdb',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+    }
+    # DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql', 
+    #     'NAME': 'ecomdb',
+    #     'USER': 'root',
+    #     'PASSWORD': '',
+    #     'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+    #     'PORT': '3306',
+    #     }
+    # }
 
 
 
