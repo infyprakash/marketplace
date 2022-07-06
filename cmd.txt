@@ -22,3 +22,59 @@ user group: s3-full-access
 user: s3-admin
 
 access key : AKIA47ZNMRCTP66GBMEL
+
+
+bucket policy:
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::ecom-bucket-001/*"
+        }
+    ]
+}
+
+CORS:
+
+[
+    {
+        "AllowedHeaders": [
+            "Authorization"
+        ],
+        "AllowedMethods": [
+            "GET",
+            "HEAD"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [
+            "Access-Control-Allow-Origin"
+        ]
+    }
+]
+
+option_settings:
+  aws:elasticbeanstalk:application:environment:
+    DJANGO_SETTINGS_MODULE: "marketplace.settings"
+    PYTHONPATH: "/var/app/current:$PYTHONPATH"
+  aws:elasticbeanstalk:container:python:
+    WSGIPath: "marketplace.wsgi:application"
+
+container_commands:
+  01_makemigrations:
+    command: "source /var/app/venv/*/bin/activate && python3 manage.py makemigrations --noinput"
+    leader_only: true
+  02_migrate:
+    command: "source /var/app/venv/*/bin/activate && python3 manage.py migrate --noinput"
+    leader_only: true
+  03_collectstatic:
+    command: "source /var/app/venv/*/bin/activate && python3 manage.py collectstatic --noinput"
+    leader_only: true
+
+
+git config core.autocrlf true
