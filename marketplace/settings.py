@@ -244,7 +244,7 @@ OSCAR_ORDER_STATUS_PIPELINE = {
     'Cancelled': (),
 }
 
-OSCAR_SHOP_NAME = "Infography"
+OSCAR_SHOP_NAME = "Connect-o-Pasal"
 
 if 'AWS_STORAGE_BUCKET_NAME' in os.environ:
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
