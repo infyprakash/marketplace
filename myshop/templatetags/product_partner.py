@@ -10,5 +10,7 @@ def render_partner(product):
 @register.simple_tag(name="render_partner_name")
 def render_partner_name(product):
     name = product.stockrecords.filter(product__id=product.id)[0].partner.name
+    if(len(name)>20):
+        name = name.replace(name[17:],"...")
     return name
     
