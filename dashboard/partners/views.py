@@ -44,7 +44,7 @@ class PartnerUpdateView(View):
                 partner.save()
             if line1 is not None:
                 partner_address.line1 = line1 
-                c = Country.objects.get(name=country)
+                c = Country.objects.get(iso_3166_1_a2=country)
                 partner_address.country = c 
                 partner_address.save()
             return redirect('/dashboard/partner/manage/shop/')
