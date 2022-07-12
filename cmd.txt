@@ -91,7 +91,7 @@ CNAME value:
 _1fde9921a06189db22b0051d413b385a.tjztrygkxr.acm-validations.aws.
 
 
-
+sudo su -
 source /var/app/venv/*/bin/activate
 cd /var/app/current/
 
