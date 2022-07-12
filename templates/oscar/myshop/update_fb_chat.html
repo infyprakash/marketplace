@@ -1,0 +1,38 @@
+{% extends "oscar/layout.html" %}
+{% load i18n %}
+
+{% block title %}
+    {% trans 'Login or register' %} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{ homepage_url }}">{% trans 'Home' %}</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">{% trans 'add Facebook messenger' %}</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-6 login_form">
+            <form id="login_form" action="{{ request.get_full_path }}" method="post" class="card card-body bg-light" >
+                <h5>{% trans 'Update Facebook messenger chat plugins code ' %}</h5>
+                <p>follow the steps in given <a href="https://developers.facebook.com/docs/messenger-platform/discovery/facebook-chat-plugin/">link</a> to get code </p>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">code</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="paste code of messenger chat plugin" name="code"></textarea>
+                  </div>
+                <button name="partner_register_submit" type="submit" value="create" class="btn btn-lg btn-primary" data-loading-text="{% trans "creating..." %}">{% trans 'create' %}</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

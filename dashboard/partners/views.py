@@ -23,13 +23,17 @@ class PartnerManageView(View):
             for shop in shops:
                 try:
                     f = FbChatModel.objects.get(partner__code=shop.code)
+                    
                 except FbChatModel.DoesNotExist:
                     f = None
+                    
                 
                 if f is not None:
-                    shop.chat=True 
+                    shop.chat=True
+                    shop.chatid = f.id 
                 else:
                     shop.chat = False
+                    shop.chatid = None
             return render(request,'oscar/dashboard/partners/manage_shops.html',{'shops':shops})
         else:
             return redirect('/accounts/login/')

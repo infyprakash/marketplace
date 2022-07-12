@@ -38,6 +38,27 @@ class FbChatAddView(View):
         else:
             return redirect('/accounts/login/')
 
+class FbChatUpdateView(View):
+    def get(self,request,code):
+        if request.user.is_authenticated:
+            partner = Partner.objects.get(code=code)
+            return render(request,'oscar/myshop/update_fb_chat.html',{'partner':partner})
+        else:
+            return redirect('/accounts/login/')
+    def post(self,request,code):
+        if request.user.is_authenticated:
+            partner = Partner.objects.get(code=code)
+            plugin_code = request.POST['code']
+            chat = FbChatModel.objects.get(partner__code = partner.code)
+            chat.code = plugin_code
+            chat.save()
+            if chat is not None:
+                return redirect('/at/{}'.format(code))
+            else:
+                return redirect('/at/{}/update/fb/messanger'.format(code))
+        else:
+            return redirect('/accounts/login/')
+
 
 
 
