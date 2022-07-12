@@ -120,10 +120,10 @@
         <p class="nonefound">{% trans "No products found." %}</p>
     {% endif %}
 
+    {{code.code | safe}}
 {% endblock content %}
 
 {% block onbodyload %}
     {{ block.super }}
     oscar.search.init();
-    {{code.code | safe}}
 {% endblock %}
