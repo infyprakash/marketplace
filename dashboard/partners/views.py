@@ -18,17 +18,19 @@ PartnerAddress = get_model('partner', 'PartnerAddress')
 class PartnerManageView(View):
     def get(self,request):
         if request.user.is_authenticated:
-            shop = Partner.objects.filter(users__id =request.user.id)[0]
-            print(shop.code)
-            try:
-                f = FbChatModel.objects.get(partner__code=shop.code)
-            except FbChatModel.DoesNotExist:
-                f = None
-            if f is not None:
-                chat=True 
-            else:
-                chat = False
-            return render(request,'oscar/dashboard/partners/manage_shops.html',{'shop':shop,'chat':chat})
+            shops = Partner.objects.filter(users__id =request.user.id)
+            # print(shop.code)
+            for shop in shops:
+                try:
+                    f = FbChatModel.objects.get(partner__code=shop.code)
+                except FbChatModel.DoesNotExist:
+                    f = None
+                
+                if f is not None:
+                    shop.chat=True 
+                else:
+                    shop.chat = False
+            return render(request,'oscar/dashboard/partners/manage_shops.html',{'shops':shops})
         else:
             return redirect('/accounts/login/')
 
