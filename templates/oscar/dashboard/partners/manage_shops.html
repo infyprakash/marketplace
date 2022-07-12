@@ -30,12 +30,15 @@
     <div class="col-sm-8">
         <table class="table">
             <tbody>
-                {% for shop in shops %}
                 <tr>
                     <td>{{shop.name}}</td>
                     <td><a href="/dashboard/partner/update/shop/{{shop.code}}" role="button" class="btn btn-warning">update</a></td>
+                    {% if chat %}
+                    <td><a href="/at/{{shop.code}}/update/fb/messanger" role="button" class="btn btn-warning">update Facebook messenger</a></td>
+                    {% else %}
+                    <td><a href="/at/{{shop.code}}/add/fb/messanger" role="button" class="btn btn-warning">Add Facebook messenger</a></td>
+                    {% endif %}
                 </tr>
-                {% endfor %}
             </tbody>
         </table>
     </div>

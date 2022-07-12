@@ -2,11 +2,11 @@
 {% load i18n %}
 
 {% block title %}
-    {% trans "Payment details" %} | {{ block.super }}
+{% trans "Payment details" %} | {{ block.super }}
 {% endblock %}
 
 {% block checkout_nav %}
-    {% include 'oscar/checkout/nav.html' with step=3 %}
+{% include 'oscar/checkout/nav.html' with step=3 %}
 {% endblock %}
 
 {% block checkout_title %}{% trans "Enter payment details" %}{% endblock %}
@@ -17,14 +17,18 @@
 {% block payment_method %}{% endblock %}
 
 {% block payment_details %}
-    {% block payment_details_content %}
-        <p>{% trans "This page needs implementing within your project.  You may want to use one of Oscar's payment gateway libraries:" %}</p>
-        <ul>
+{% block payment_details_content %}
+<div class="form-check mb-4">
+    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Cash On Delivery
+    <label class="form-check-label" for="radio1"></label>
+</div>
+<!-- <p>{% trans "This page needs implementing within your project.  You may want to use one of Oscar's payment gateway libraries:" %}</p> -->
+<!-- <ul>
             <li><a href="https://github.com/django-oscar/django-oscar-paypal">django-oscar-paypal</a></li>
             <li><a href="https://github.com/django-oscar/django-oscar-adyen">django-oscar-adyen</a></li>
             <li><a href="https://github.com/django-oscar/django-oscar-docdata">django-oscar-docdata</a></li>
             <li><a href="https://github.com/django-oscar/django-oscar-accounts">django-oscar-accounts</a></li>
-        </ul>
-        <a id="view_preview" href="{% url 'checkout:preview' %}" class="btn btn-primary btn-lg">{% trans "Continue" %}</a>
-    {% endblock payment_details_content %}
+        </ul> -->
+<a id="view_preview" href="{% url 'checkout:preview' %}" class="btn btn-primary btn-lg">{% trans "Continue" %}</a>
+{% endblock payment_details_content %}
 {% endblock payment_details %}

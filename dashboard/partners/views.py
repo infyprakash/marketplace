@@ -6,6 +6,7 @@ from oscar.apps.partner.models import Partner
 from oscar.apps.address.models import Country
 from dashboard.partners.forms import  PartnerAddressForm
 from django.contrib.auth.models import Permission
+from myshop.models import FbChatModel
 
 from oscar.core.loading import get_class, get_model
 PartnerAddress = get_model('partner', 'PartnerAddress')
@@ -17,8 +18,14 @@ PartnerAddress = get_model('partner', 'PartnerAddress')
 class PartnerManageView(View):
     def get(self,request):
         if request.user.is_authenticated:
-            shops = Partner.objects.filter(users__id =request.user.id)
-            return render(request,'oscar/dashboard/partners/manage_shops.html',{'shops':shops})
+            shop = Partner.objects.filter(users__id =request.user.id)[0]
+            print(shop.code)
+            f = FbChatModel.objects.get(partner__code=shop.code)
+            if f is not None:
+                chat=True 
+            else:
+                chat = False
+            return render(request,'oscar/dashboard/partners/manage_shops.html',{'shop':shop,'chat':chat})
         else:
             return redirect('/accounts/login/')
 
