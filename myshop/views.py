@@ -13,8 +13,11 @@ class ShopCatalogueView(View):
         partner = Partner.objects.get(code=code)
         stocks = StockRecord.objects.filter(partner__id=partner.id)
         address = PartnerAddress.objects.get(partner__id=partner.id)
-        f = FbChatModel.objects.get(partner__code=partner.code)
-        return render(request,'oscar/myshop/shop_catalogue.html',{'stocks':stocks,'address':address,'partner':partner,'code':f.code})
+        try:
+            f = FbChatModel.objects.get(partner__code=partner.code)
+        except FbChatModel.DoesNotExist:
+            f = None
+        return render(request,'oscar/myshop/shop_catalogue.html',{'stocks':stocks,'address':address,'partner':partner,'code':f})
 
 class FbChatAddView(View):
     def get(self,request,code):

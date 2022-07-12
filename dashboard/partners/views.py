@@ -20,7 +20,10 @@ class PartnerManageView(View):
         if request.user.is_authenticated:
             shop = Partner.objects.filter(users__id =request.user.id)[0]
             print(shop.code)
-            f = FbChatModel.objects.get(partner__code=shop.code)
+            try:
+                f = FbChatModel.objects.get(partner__code=shop.code)
+            except FbChatModel.DoesNotExist:
+                f = None
             if f is not None:
                 chat=True 
             else:

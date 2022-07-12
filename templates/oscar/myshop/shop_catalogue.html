@@ -125,5 +125,5 @@
 {% block onbodyload %}
     {{ block.super }}
     oscar.search.init();
-    {{code | safe}}
+    {{code.code | safe}}
 {% endblock %}
