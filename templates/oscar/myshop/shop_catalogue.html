@@ -11,6 +11,26 @@
 {% endblock %}
 
 {% block headertext %}{{ summary }}{% endblock %} -->
+{% block extrastyles %}
+<style>
+    #profileImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #0b6bd3;
+  font-size: 35px;
+  color: white;
+  /* border: 2px solid #512DA8; */
+  text-align: center;
+  line-height: 90px;
+  /* margin: auto; */
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+{% endblock %}
+
+
 
 {% block breadcrumbs %}
     <nav aria-label="breadcrumb">
@@ -24,17 +44,18 @@
 {% block column_left %}
     {% category_tree as tree_categories %}
 
-    <div class="side_categories card card-body bg-light overflow-hidden" >
-        <h5 class="card-title">{{partner.name}}</h5>
+    <div class="side_categories card card-body shadow-lg overflow-hidden text-center" style="height: 100%;">
+        <p id="profileImage" class="card-text"></p>
+        <h2 class="card-title" id="firstName">{{partner.name}}</h2>
+        <hr>
+        <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+        <hr>
         <ul class="nav nav-list flex-column">
             <li class="mt-2">visit us at: <a href="/at/{{partner.code}}">{{partner.name}}</a></li>
             <li class="mt-2">
                 <address>
                     {{address.line1}}
                 </address>
-            </li>
-            <li>
-                <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
             </li>
 
         </ul>
@@ -130,4 +151,10 @@
 {% block onbodyload %}
     {{ block.super }}
     oscar.search.init();
+    $(document).ready(function(){
+        var firstName = $('#firstName').text();
+        // var lastName = $('#lastName').text();
+        var intials = $('#firstName').text().charAt(0);
+        var profileImage = $('#profileImage').text(intials);
+      });
 {% endblock %}
