@@ -7,6 +7,7 @@
 {% load display_tags %}
 {% load i18n %}
 {% load purchase_info_tags %}
+{% load product_partner %}
 
 {% block title %}
     {{ product.get_meta_title }} | {{ block.super }}
@@ -68,6 +69,8 @@
             <h1>{{ product.get_title }}</h1>
 
             <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+            <hr>
+            product of: <a href="/at/{% render_partner product %}">{% render_partner_name product  %}</a>
 
             {% block product_stock_record %}
                 {% include "oscar/catalogue/partials/stock_record.html" with verbose=1 %}
