@@ -1,10 +1,11 @@
+
 {% load history_tags %}
 {% load basket_tags %}
 {% load currency_filters %}
 {% load image_tags %}
 {% load i18n %}
 
-<ul class="basket-mini-item list-unstyled">
+<ul class="basket-mini-item list-unstyled overflow-hidden">
     {% if request.basket.num_lines %}
         {% for line in request.basket.all_lines %}
             <li>

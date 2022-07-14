@@ -62,7 +62,7 @@
                                     <div class="input-group {% if form.errors %}error{% endif %}">
                                         {% render_field form.quantity class+="form-control" %}
                                     <div class="input-group-append">
-                                        <button class="btn btn-secondary" type="submit" data-loading-text="{% trans 'Updating...' %}">{% trans "Update" %}</button>
+                                        <button class="btn" type="submit" data-loading-text="{% trans 'Updating...' %}">{% trans "Update" %}</button>
                                     </div>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                     <div class="sub-header">
                         <h2>{% trans "Voucher/promo code" %}</h2>
                     </div>
-                    <p id="voucher_form_link"><a href="#voucher" class="btn btn-secondary btn-full">{% trans "I have a voucher code..." %}</a></p>
+                    <p id="voucher_form_link"><a href="#voucher" class="btn btn-full">{% trans "I have a voucher code..." %}</a></p>
 
                     <div id="voucher_form_container" style="display:none">
                         <form id="voucher_form" action="{% url 'basket:vouchers-add' %}" method="post">
