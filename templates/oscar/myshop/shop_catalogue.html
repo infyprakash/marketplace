@@ -10,16 +10,16 @@
     {% if summary %}{{ summary }} |{% endif %} {{ block.super }}
 {% endblock %}
 
-{% block headertext %}{{ summary }}{% endblock %}
+{% block headertext %}{{ summary }}{% endblock %} -->
 
 {% block breadcrumbs %}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ homepage_url }}">{% trans "Home" %}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ summary }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ partner.name }}</li>
         </ol>
     </nav>
-{% endblock breadcrumbs %} -->
+{% endblock breadcrumbs %}
 
 {% block column_left %}
     {% category_tree as tree_categories %}
