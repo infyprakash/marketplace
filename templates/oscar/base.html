@@ -29,12 +29,17 @@
         .breadcrumb {
             border-radius: 0;
             display: flex;
-            background-color: none;
             padding: 0%;
+            background-color: white;
         }
-
+        .breadcrumb-item.active{
+            color: red;
+        }
+        .price_color{
+            color: red;
+        }
         .breadcrumb .breadcrumb-item:nth-child(2)::before {
-            content: "\3E"
+            content: "\3E";
         }
 
         a,
