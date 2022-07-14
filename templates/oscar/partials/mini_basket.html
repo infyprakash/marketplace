@@ -4,9 +4,9 @@
 <div class="basket-mini col-sm-5 text-right d-none d-md-block">
     <strong>{% trans "Basket total:" %}</strong>
     {% if request.basket.is_tax_known %}
-        {{ request.basket.total_incl_tax|currency:request.basket.currency }}
+        <span style="color: red;font-weight: bold;">{{ request.basket.total_incl_tax|currency:request.basket.currency }}</span>
     {% else %}
-        {{ request.basket.total_excl_tax|currency:request.basket.currency }}
+        <span style="color: red;font-weight: bold;">{{ request.basket.total_excl_tax|currency:request.basket.currency }}</span>
     {% endif %}
 
     <div class="btn-group">
