@@ -24,7 +24,7 @@
 {% block column_left %}
     {% category_tree as tree_categories %}
 
-    <div class="side_categories card card-body bg-light">
+    <div class="side_categories card card-body bg-light overflow-hidden" >
         <h5 class="card-title">{{partner.name}}</h5>
         <ul class="nav nav-list flex-column">
             <li class="mt-2">visit us at: <a href="/at/{{partner.code}}">{{partner.name}}</a></li>
@@ -32,6 +32,9 @@
                 <address>
                     {{address.line1}}
                 </address>
+            </li>
+            <li>
+                <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
             </li>
 
         </ul>
