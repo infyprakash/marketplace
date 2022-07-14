@@ -1,6 +1,8 @@
 {% load currency_filters %}
 {% load i18n %}
-
+{% block extrastyles %}
+<style>.dropdown-toggle:after { content: none }</style>
+{% endblock %}
 <div class="basket-mini col-sm-5 text-right d-none d-md-block">
     <strong>{% trans "Basket total:" %}</strong>
     {% if request.basket.is_tax_known %}
@@ -10,9 +12,8 @@
     {% endif %}
 
     <div class="btn-group">
-      <button type="button" class="{% block mini_basket_btn_classes %}btn {% endblock %}" onclick="window.location.href='{% url 'basket:summary' %}';"><i class="fa fa-shopping-cart" style="font-size:24px;"></i></button>
-      <button type="button" class="{% block mini_basket_toggle_classes %}btn  dropdown-toggle dropdown-toggle-split{% endblock %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
+      <button type="button"  class="{% block mini_basket_toggle_classes %}btn  dropdown-toggle dropdown-toggle-split{% endblock %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:50% ;height:50px;width: 50px;background-color:#0b6bd3;">
+        <i class="fa fa-shopping-cart" style="font-size:20px;color: white;"></i>
       </button>
       <div class="{% block mini_basket_dropdown_classes %}dropdown-menu dropdown-menu-right{% endblock %}">
         {% include "oscar/basket/partials/basket_quick.html" %}
