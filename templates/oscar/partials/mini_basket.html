@@ -10,8 +10,8 @@
     {% endif %}
 
     <div class="btn-group">
-      <button type="button" class="{% block mini_basket_btn_classes %}btn btn-outline-secondary{% endblock %}" onclick="window.location.href='{% url 'basket:summary' %}';">{% trans "View basket" %}</button>
-      <button type="button" class="{% block mini_basket_toggle_classes %}btn btn-outline-secondary dropdown-toggle dropdown-toggle-split{% endblock %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button type="button" class="{% block mini_basket_btn_classes %}btn {% endblock %}" onclick="window.location.href='{% url 'basket:summary' %}';"><i class="fa fa-shopping-cart" style="font-size:24px;"></i></button>
+      <button type="button" class="{% block mini_basket_toggle_classes %}btn  dropdown-toggle dropdown-toggle-split{% endblock %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="sr-only">Toggle Dropdown</span>
       </button>
       <div class="{% block mini_basket_dropdown_classes %}dropdown-menu dropdown-menu-right{% endblock %}">

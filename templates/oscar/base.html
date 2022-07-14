@@ -19,7 +19,43 @@
     {% block styles %}{% endblock %}
 
     {# Additional CSS - specific to certain pages #}
-    {% block extrastyles %}{% endblock %}
+    {% block extrastyles %}
+    <style>
+        body {
+            background-color: white;
+            color: #0b6bd3;
+        }
+
+        .breadcrumb {
+            border-radius: 0;
+            display: flex;
+            background-color: none;
+            padding: 0%;
+        }
+
+        .breadcrumb .breadcrumb-item:nth-child(2)::before {
+            content: "\3E"
+        }
+
+        a,
+        a:hover,
+        a:focus,
+        a:active {
+            text-decoration: none;
+            color: #0b6bd3;
+        }
+        .btn:hover,
+        .btn:focus,
+        .btn:active
+        {
+            color: white;
+        }
+        .btn{
+            background-color: #0b6bd3;
+            color: white;            
+        }
+    </style>
+    {% endblock %}
 
     {% block extrahead %}{% endblock %}
 

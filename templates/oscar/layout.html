@@ -10,12 +10,12 @@
     {% include "oscar/partials/nav_accounts.html" %}
 
     {# Site logo/title, mini-basket, browse dropdown and searchbox #}
-    <header class="header container">
-        <div class="page_inner">
+    <header class="header container-fluid">
+        <div>
             <div class="row justify-content-between">
                 {% include "oscar/partials/brand.html" %}
                 {# Mini-basket wrapped in a block so some templates can now display it #}
-                {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
+                <!-- {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %} -->
             </div>
         </div>
         {% block navigation %}
@@ -25,7 +25,7 @@
 
     {# Main content of page - other layout templates may override this block #}
     {% block content_wrapper %}
-        <div class="container page">
+        <div class="container-fluid page overflow-hidden">
             <div class="page_inner">
                 {% block breadcrumbs %}{% endblock %}
                 {% block header %}

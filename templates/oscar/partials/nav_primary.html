@@ -2,7 +2,7 @@
 {% load category_tags %}
 {% load i18n %}
 
-<nav class="{% block nav_classes %}navbar navbar-expand-lg navbar-dark bg-dark{% endblock %}">
+<nav class="{% block nav_classes %}navbar navbar-expand-lg bg-white mb-4 mt-2 shadow-lg sticky-top {% endblock %}">
     {% block navbar_toggler %}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -58,6 +58,7 @@
             {% block nav_extra %}
                 {% include "oscar/partials/search.html" %}
             {% endblock %}
+            {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
         </div>
     {% endblock %}
 </nav>
