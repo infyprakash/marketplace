@@ -22,22 +22,24 @@
 
 <div class="row">
     <div class="col-sm-4">
-        {% if user.is_authenticated %}
-        <p>Hello! {{user.email}}</p>
-        {% endif %}
     </div>
 
     <div class="col-sm-8">
-        <table class="table">
+        {% if user.is_authenticated %}
+        <p class="font-weight-bold text-center shadow-lg">MANAGE YOUR SHOP HERE</p>
+        <p >Hello! <span class="font-weight-bold">{{user.email}}</span>  </p>
+        {% endif %}
+        <hr>
+        <table class="table table-borderless ">
             <tbody>
                 {% for shop in shops %}
                 <tr>
-                    <td>{{shop.name}}</td>
-                    <td><a href="/dashboard/partner/update/shop/{{shop.code}}" role="button" class="btn btn-warning">update</a></td>
+                    <td><a href="/at/{{shop.code}}">{{shop.name}}</a></td>
+                    <td><a href="/dashboard/partner/update/shop/{{shop.code}}" role="button" class="btn btn-lg w-100">update</a></td>
                     {% if shop.chat %}
-                    <td><a href="/at/{{shop.code}}/update/fb/messanger" role="button" class="btn btn-warning">update Facebook messenger</a></td>
+                    <td><a href="/at/{{shop.code}}/update/fb/messanger" role="button" class="btn btn-lg w-100">update Facebook messenger</a></td>
                     {% else %}
-                    <td><a href="/at/{{shop.code}}/add/fb/messanger" role="button" class="btn btn-warning">Add Facebook messenger</a></td>
+                    <td><a href="/at/{{shop.code}}/add/fb/messanger" role="button" class="btn btn-lg w-100">Add Facebook messenger</a></td>
                     {% endif %}
                 </tr>
                 {% endfor %}
