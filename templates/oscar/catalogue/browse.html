@@ -24,7 +24,7 @@
 {% block column_left %}
 
 
-<nav id="accordion" style="height:100%">
+<nav id="accordion" >
     <div class="card" >
       <div class="card-header" id="headingOne">
         <h5 class="mb-0">
@@ -36,7 +36,7 @@
       </div>
   
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion" >
-        <div class="card-body">
+        <div class="card-body" style="height:100%">
             <div>
                 {% category_tree as tree_categories %}
                 {% if tree_categories %}
