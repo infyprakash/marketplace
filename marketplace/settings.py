@@ -247,7 +247,7 @@ OSCAR_ORDER_STATUS_PIPELINE = {
     'Cancelled': (),
 }
 
-OSCAR_SHOP_NAME = "Connect-o-Pasal"
+OSCAR_SHOP_NAME = "connect-O-pasal"
 
 OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
 
