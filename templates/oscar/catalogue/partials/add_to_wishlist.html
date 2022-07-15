@@ -8,12 +8,12 @@
         {% if wishlists %}
 
             <div class="btn-group btn-wishlist align-bottom">
-                <a class="btn btn-lg dropdown-toggle" data-toggle="dropdown" href="#">{% trans "Add to wish list" %}</a>
+                <a class="btn btn-lg dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #ffa6c9;" >{% trans "Add to wish list" %}</a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     {% for wishlist in wishlists %}
                         {% if wishlist not in product_wishlists %}
                             <li>
-                                <a href="{% url 'customer:wishlists-add-product' key=wishlist.key product_pk=product.pk %}" class="dropdown-item">
+                                <a href="{% url 'customer:wishlists-add-product' key=wishlist.key product_pk=product.pk %}" class="dropdown-item" style="background-color: #ffa6c9;">
                                     {% blocktrans with name=wishlist.name %}
                                         Add to '{{ name }}' wish list
                                     {% endblocktrans %}
@@ -32,7 +32,7 @@
             {# 1 or no existing wishlists - show a simple button #}
             <form id="add_to_wishlist_form" action="{% url 'customer:wishlists-add-product' product_pk=product.pk %}" method="post" class="btn-wishlist align-bottom">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-lg" data-loading-text="{% trans 'Adding...' %}">{% trans "Add to wish list" %}</button>
+                <button type="submit" class="btn btn-lg" data-loading-text="{% trans 'Adding...' %}" style="background-color: #ffa6c9;"><i class="fa fa-heart" aria-hidden="true"></i>{% trans "Add to wish list" %}</button>
             </form>
         {% endif %}
 
@@ -42,7 +42,7 @@
                 {% blocktrans with name=wishlist.name url=wishlist.get_absolute_url %}
                     <span class="float-left">Product is in <a href="{{ url }}">'{{ name }}'</a> wishlist.</span>
                 {% endblocktrans %}
-                <button type="submit" class="btn btn-sm float-right" data-loading-text="{% trans 'Removing...' %}">{% trans "Remove" %}</button>
+                <button type="submit" class="btn btn-sm float-right" data-loading-text="{% trans 'Removing...' %}" >{% trans "Remove" %}</button>
             </form>
         {% endfor %}
     {% endwith %}
