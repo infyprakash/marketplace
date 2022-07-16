@@ -5,12 +5,19 @@
 {% load product_tags %}
 {% load i18n %}
 
+{% block extrastyles %}
+<style>
+</style>
+{% endblock %}
 
 {% block title %}
 {% if summary %}{{ summary }} |{% endif %} {{ block.super }}
 {% endblock %}
 
-{% block headertext %}{{ summary }}{% endblock %}
+{% block headertext %}
+<div class="container"> <div class="ticker"> <div class="title"><h2>Notice</h2></div> <div class="news"> <marquee class="news-content"> <p style="color: red;font-weight:bold;font-size:30px;">The site is under construction</p> </marquee> </div> </div> </div>
+{{ summary }}
+{% endblock %}
 
 {% block breadcrumbs %}
 <nav aria-label="breadcrumb">
@@ -103,7 +110,6 @@
 {% endblock %}
 
 {% block content %}
-
 <form method="get">
     {# Render other search params as hidden inputs #}
     {% for value in selected_facets %}
