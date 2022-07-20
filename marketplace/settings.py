@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'oscar.apps.analytics.apps.AnalyticsConfig',
     'oscar.apps.checkout.apps.CheckoutConfig',
     'oscar.apps.address.apps.AddressConfig',
-    'oscar.apps.shipping.apps.ShippingConfig',
+    # 'oscar.apps.shipping.apps.ShippingConfig',
+    'myapps.shipping.apps.ShippingConfig',
     'oscar.apps.catalogue.apps.CatalogueConfig',
     'oscar.apps.catalogue.reviews.apps.CatalogueReviewsConfig',
     'oscar.apps.communication.apps.CommunicationConfig',
@@ -239,7 +240,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 HAYSTACK_CONNECTIONS = {
     'default': {
@@ -268,3 +269,14 @@ if 'AWS_STORAGE_BUCKET_NAME' in os.environ:
 
     AWS_S3_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_S3_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+
+
+
+OSCAR_FROM_EMAIL = "infymee@gmail.com"
+OSCAR_SEND_REGISTRATION_EMAIL = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "infymee@gmail.com"
+EMAIL_HOST_PASSWORD = "zmprpevzothmuciz"
