@@ -5,7 +5,7 @@
 {% load image_tags %}
 {% load i18n %}
 
-<ul class="basket-mini-item list-unstyled" style="overflow-y:hidden ;overflow-x:scroll">
+<ul class="basket-mini-item list-unstyled" >
     {% if request.basket.num_lines %}
         {% for line in request.basket.all_lines %}
             <li>
