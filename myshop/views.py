@@ -7,6 +7,13 @@ from dashboard.partners.views import PartnerAddress
 from oscar.apps.partner.models import Partner,StockRecord
 from myshop.models import FbChatModel
 # Create your views here.
+class About(View):
+    def get(self,request):
+        return render(request,'oscar/myshop/about.html')
+
+class Faq(View):
+    def get(self,request):
+        return render(request,'oscar/myshop/faq.html')
 
 class ShopCatalogueView(View):
     def get(self,request,code):

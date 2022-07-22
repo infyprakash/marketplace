@@ -32,7 +32,7 @@
             {# 1 or no existing wishlists - show a simple button #}
             <form id="add_to_wishlist_form" action="{% url 'customer:wishlists-add-product' product_pk=product.pk %}" method="post" class="btn-wishlist align-bottom">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-lg w-100" data-loading-text="{% trans 'Adding...' %}" style="background-color: #ffa6c9;"><i class="fas fa-heart" aria-hidden="true"></i>{% trans "Add to wish list" %}</button>
+                <button type="submit" class="btn btn-lg w-100" data-loading-text="{% trans 'Adding...' %}" style="background-color: #ffa6c9;"><i class="fa fa-heart" aria-hidden="true"></i>{% trans "Add to wish list" %}</button>
             </form>
         {% endif %}
 

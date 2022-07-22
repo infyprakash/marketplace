@@ -22,6 +22,11 @@
 
 <div class="row">
     <div class="col-sm-4">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <i class='fas fa-store-alt' style='font-size:24px'></i>&nbsp;<a href="/dashboard/partner/register/shop/"> Register a shop</a>
+            </div>
+        </div>
     </div>
 
     <div class="col-sm-8">
@@ -35,11 +40,11 @@
                 {% for shop in shops %}
                 <tr>
                     <td><a href="/at/{{shop.code}}">{{shop.name}}</a></td>
-                    <td><a href="/dashboard/partner/update/shop/{{shop.code}}" role="button" class="btn btn-lg">update</a></td>
+                    <td><a href="/dashboard/partner/update/shop/{{shop.code}}" role="button" class="btn btn-sm">update</a></td>
                     {% if shop.chat %}
-                    <td><a href="/at/{{shop.code}}/update/fb/messanger" role="button" class="btn btn-lg">update Facebook messenger</a></td>
+                    <td><a href="/at/{{shop.code}}/update/fb/messanger" role="button" class="btn btn-sm">update Facebook messenger</a></td>
                     {% else %}
-                    <td><a href="/at/{{shop.code}}/add/fb/messanger" role="button" class="btn btn-lg">Add Facebook messenger</a></td>
+                    <td><a href="/at/{{shop.code}}/add/fb/messanger" role="button" class="btn btn-sm">Add Facebook messenger</a></td>
                     {% endif %}
                 </tr>
                 {% endfor %}

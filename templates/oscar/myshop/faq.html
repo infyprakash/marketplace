@@ -1,0 +1,211 @@
+{% extends "oscar/layout_2_col.html" %}
+
+{% load basket_tags %}
+{% load category_tags %}
+{% load product_tags %}
+{% load i18n %}
+
+{% block extrastyles %}
+<style>
+    #faq-accord button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ homepage_url }}">{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{% trans "frequently asked questions" %}</li>
+    </ol>
+</nav>
+{% endblock breadcrumbs %}
+
+{% block column_left %}
+{% category_tree as tree_categories %}
+
+
+{% if has_facets %}
+<h4>{% trans "Refine by" %}</h4>
+<div class="side_categories card card-body bg-light">
+    {% for field, data in facet_data.items %}
+    {% if data.results %}
+    {% include 'oscar/search/partials/facet.html' with name=data.name items=data.results %}
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<form method="get">
+    {# Render other search params as hidden inputs #}
+    {% for value in selected_facets %}
+    <input type="hidden" name="selected_facets" value="{{ value }}" />
+    {% endfor %}
+    <input type="hidden" name="q" value="{{ search_form.q.value|default_if_none:"" }}" />
+
+    {% if paginator.count %}
+    {% if paginator.num_pages > 1 %}
+    {% blocktrans with start=page_obj.start_index end=page_obj.end_index count num_results=paginator.count %}
+    <strong>{{ num_results }}</strong> result - showing <strong>{{ start }}</strong> to <strong>{{ end }}</strong>.
+    {% plural %}
+    <strong>{{ num_results }}</strong> results - showing <strong>{{ start }}</strong> to <strong>{{ end }}</strong>.
+    {% endblocktrans %}
+    {% else %}
+    {% blocktrans count num_results=paginator.count %}
+    <strong>{{ num_results }}</strong> result.
+    {% plural %}
+    <strong>{{ num_results }}</strong> results.
+    {% endblocktrans %}
+    {% endif %}
+    {% if form %}
+    <div class="float-right">
+        {% include "oscar/partials/form_field.html" with field=form.sort_by style='horizontal' %}
+    </div>
+    {% endif %}
+
+    {% endif %}
+</form>
+
+
+<section>
+    <div id="faq-accord">
+        <h2 style="color:black;">Frequently Asked Questions </h2>
+        <!-- accordion start  -->
+        <div id="accordion">
+            
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    what is connectopasal.com?
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    connectopasal.com is an online multi-vendor ecommerce website, to help small business owner and retail stores to set up, start,manage and own an online store, free of cost.
+                </div>
+              </div>
+            </div>
+            
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    How to setup a shop in connectopasal.com?
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    To set up a shop in connectopasal.com, click on this <a href="/dashboard/partner/register/shop/" style="color:red">Link</a>. once you are on the page to register shop, fill NAME of your shop, FULL ADDRESS with phone number and choose country. 
+                </div>
+              </div>
+            </div>
+            
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    How to add product to my shop ?
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                  click on <a href="/dashboard" style="color: red;">dashboard</a> to visit your shop dashboard.Then follow following steps:
+                  <ul>
+                    <li>from navbar click on catalog</li>
+                    <li>choose products</li>
+                    <li>create a new product type: choose a product type</li>
+                    <li>click on +new product</li>
+                    <li>fill up the product details, as follow:
+                        <ul>
+                            <li>click on product details: to fill up product title, UPC (unique product code) and fill up specifications / descriptions for your product in detail</li>
+                            <li>click on categories, choose appropriate category, your shop's prodcut belong to</li>
+                            <li>click on attribute, and fill up appropriate attributes [color,size etc] of your product</li>
+                            <li>click on images, and upload the images of your products</li>
+                            <li>click on stocks and pricing, choose your shop to which you want to add products by clicking partner dropdown,
+                                in SKU, fill unique storage keeping unit of your product, 
+                                in Num in stock, fill up number of products in your stock,
+                                in Low stock threshold, fill up low threshold value of your stock
+                                in Price, fill up selling price of your product.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>upselling and SEO is used to add product recommendations and search engine friendly keywords related to your product.</li>
+                    <li>once done, click on save, now you have successfully uploaded a product to your site.</li>
+                  </ul> 
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingFour">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      How to see daily orders of my shop?
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                  <div class="card-body">
+                    click on <a href="/dashboard" style="color: red;">dashboard</a> to visit your shop dashboard.Then follow following steps:
+                    <ul>
+                        <li>click on Orders- ALL TIME and click on manage</li>
+                        <li>Now you can see and the orders, and manage orders accordingly.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header" id="headingFive">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                      How to manage my shops?
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                  <div class="card-body">
+                    click on <a href="/dashboard/partner/manage/shop/" style="color:red;">manage shop</a> to manage the shops you own.
+                  </div>
+                </div>
+              </div>
+
+              
+          </div>
+
+          <!-- accordion ends  -->
+    </div>
+</section>
+
+
+{{code.code | safe}}
+{% endblock content %}
+
+
+{% block onbodyload %}
+{{ block.super }}
+oscar.search.init();
+$(document).ready(function(){
+var firstName = $('#firstName').text();
+// var lastName = $('#lastName').text();
+var intials = $('#firstName').text().charAt(0);
+var profileImage = $('#profileImage').text(intials);
+});
+{% endblock %}

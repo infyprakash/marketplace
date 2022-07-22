@@ -1,0 +1,108 @@
+{% extends "oscar/layout_2_col.html" %}
+
+{% load basket_tags %}
+{% load category_tags %}
+{% load product_tags %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ homepage_url }}">{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{% trans "about us" %}</li>
+    </ol>
+</nav>
+{% endblock breadcrumbs %}
+
+{% block column_left %}
+{% category_tree as tree_categories %}
+
+
+{% if has_facets %}
+<h4>{% trans "Refine by" %}</h4>
+<div class="side_categories card card-body bg-light">
+    {% for field, data in facet_data.items %}
+    {% if data.results %}
+    {% include 'oscar/search/partials/facet.html' with name=data.name items=data.results %}
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<form method="get">
+    {# Render other search params as hidden inputs #}
+    {% for value in selected_facets %}
+    <input type="hidden" name="selected_facets" value="{{ value }}" />
+    {% endfor %}
+    <input type="hidden" name="q" value="{{ search_form.q.value|default_if_none:"" }}" />
+
+    {% if paginator.count %}
+    {% if paginator.num_pages > 1 %}
+    {% blocktrans with start=page_obj.start_index end=page_obj.end_index count num_results=paginator.count %}
+    <strong>{{ num_results }}</strong> result - showing <strong>{{ start }}</strong> to <strong>{{ end }}</strong>.
+    {% plural %}
+    <strong>{{ num_results }}</strong> results - showing <strong>{{ start }}</strong> to <strong>{{ end }}</strong>.
+    {% endblocktrans %}
+    {% else %}
+    {% blocktrans count num_results=paginator.count %}
+    <strong>{{ num_results }}</strong> result.
+    {% plural %}
+    <strong>{{ num_results }}</strong> results.
+    {% endblocktrans %}
+    {% endif %}
+    {% if form %}
+    <div class="float-right">
+        {% include "oscar/partials/form_field.html" with field=form.sort_by style='horizontal' %}
+    </div>
+    {% endif %}
+
+    {% endif %}
+</form>
+
+
+<section>
+    <div class="d-flex flex-row justify-content-start flex-wrap">
+        <div class="card shadow-lg" style="width: auto;">
+            <div class="card-body">
+              <h2 class="card-title" style="color: black;">About Us</h2>
+              
+              <p class="card-text">
+                <a href="/" class="Home" style="color: black;">connect-O-pasal</a> is an online multi-vendor marketplace, owned ,designed and managed by <a href="https://infographytechnologies.com" style="color: black;">Infography Technologies Pvt. Ltd.</a>
+              </p>
+
+              <h4 style="color: black;">Aims & Objectives</h4>
+              <ul>
+                <li>To help small business owner and retail stores to set up, start,manage and own an online store, free of cost.</li>
+                <li>To help small business owner and retail stores to boarden reach, exposure and sales of their products and services</li>
+              </ul>
+              <h4 style="color: black;">Help, Support and Queries</h4>
+              <p>office: kupondole, Lalitpur</p>
+              <p>phone : +977-9817689914</p>
+              <p>facebook page: <a href="https://www.facebook.com/InfographyTechnologies" style="color: black;">Infography Technologies</a></p>
+              <div class="d-flex justify-content-between">
+                <a href="/" class="Home">Home</a>
+                <a href="/dashboard/partner/register/shop/" class="card-link">Register a shop</a>
+              </div>
+            </div>
+          </div>
+    </div>
+</section>
+
+
+{{code.code | safe}}
+{% endblock content %}
+
+
+{% block onbodyload %}
+{{ block.super }}
+oscar.search.init();
+$(document).ready(function(){
+var firstName = $('#firstName').text();
+// var lastName = $('#lastName').text();
+var intials = $('#firstName').text().charAt(0);
+var profileImage = $('#profileImage').text(intials);
+});
+{% endblock %}
