@@ -4,7 +4,7 @@
 <style>.dropdown-toggle:after { content: none }</style>
 {% endblock %}
 <div class="basket-mini col-sm-5 text-right d-none d-md-block" >
-    <strong>{% trans "Basket total:" %}</strong>
+  <a href="{% url 'basket:summary' %}" class="">{% trans "Basket total:" %}</a>
     {% if request.basket.is_tax_known %}
         <span style="color: red;font-weight: bold;">{{ request.basket.total_incl_tax|currency:request.basket.currency }}</span>
     {% else %}
@@ -15,7 +15,7 @@
       <button type="button"  class="{% block mini_basket_toggle_classes %}btn  dropdown-toggle dropdown-toggle-split{% endblock %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:50% ;height:50px;width: 50px;background-color:#0b6bd3;">
         <i class="fa fa-shopping-cart" style="font-size:20px;color: white;"></i>
       </button>
-      <div class="{% block mini_basket_dropdown_classes %}dropdown-menu dropdown-menu-right{% endblock %}" style="overflow: scroll;height:400px ;">
+      <div class="{% block mini_basket_dropdown_classes %} dropdown-menu dropdown-menu-right{% endblock %} overflow-auto" >
         {% include "oscar/basket/partials/basket_quick.html" %}
       </div>
     </div>

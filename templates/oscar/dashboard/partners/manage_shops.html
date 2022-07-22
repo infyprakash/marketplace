@@ -35,11 +35,11 @@
                 {% for shop in shops %}
                 <tr>
                     <td><a href="/at/{{shop.code}}">{{shop.name}}</a></td>
-                    <td><a href="/dashboard/partner/update/shop/{{shop.code}}" role="button" class="btn btn-lg w-100">update</a></td>
+                    <td><a href="/dashboard/partner/update/shop/{{shop.code}}" role="button" class="btn btn-lg">update</a></td>
                     {% if shop.chat %}
-                    <td><a href="/at/{{shop.code}}/update/fb/messanger" role="button" class="btn btn-lg w-100">update Facebook messenger</a></td>
+                    <td><a href="/at/{{shop.code}}/update/fb/messanger" role="button" class="btn btn-lg">update Facebook messenger</a></td>
                     {% else %}
-                    <td><a href="/at/{{shop.code}}/add/fb/messanger" role="button" class="btn btn-lg w-100">Add Facebook messenger</a></td>
+                    <td><a href="/at/{{shop.code}}/add/fb/messanger" role="button" class="btn btn-lg">Add Facebook messenger</a></td>
                     {% endif %}
                 </tr>
                 {% endfor %}

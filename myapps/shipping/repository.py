@@ -9,3 +9,11 @@ class Repository(repository.Repository):
             # Express is only available in the UK
             # methods = (methods.Standard(), methods.Express())
         return method
+
+# from oscar.apps.shipping import methods
+# from oscar.core import prices
+
+# class Standard(methods.FixedPrice):
+#     code = 'standard'
+#     name = 'Standard shipping'
+#     charge_excl_tax = ('5.00')
