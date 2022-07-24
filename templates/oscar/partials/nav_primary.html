@@ -47,7 +47,7 @@
                     <ul class="dropdown-menu">
                         {% for tree_category in tree_categories %}
                         <li>
-                            <a href="{{ tree_category.url }}" class="dropdown-item" style="color:black;font-weight:bold;">
+                            <a href="{{ tree_category.url }}" class="dropdown-item" style="color:#0b6bd3;">
                                 {% if tree_category.pk == category.pk %}
                                     <strong>{{ tree_category.name }}</strong>
                                 {% else %}
