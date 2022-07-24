@@ -26,72 +26,38 @@
 
 {% block column_left %}
 
+<!-- {% category_tree as tree_categories %}
+{% if tree_categories %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main_nav">
+<ul class="navbar-nav">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  First level 3  </a>
+        <ul class="dropdown-menu">
+            {% for tree_category in tree_categories %}
+            <li>
+                <a href="{{ tree_category.url }}" class="dropdown-item">
+                    {% if tree_category.pk == category.pk %}
+                        <strong>{{ tree_category.name }}</strong>
+                    {% else %}
+                        {{ tree_category.name }}
+                    {% endif %}
+                </a>
 
-<div id="accordion" style="height:100%;">
-    <div class="card" >
-      <div class="card-header" id="headingOne">
-        <h5 class="mb-0">
-          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <i class="fa fa-bars" aria-hidden="true"></i>
-          </button>
-          CATEGORIES
-        </h5>
-      </div>
-  
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion" >
-        <div class="card-body" style="height:100%">
-            <div>
-                {% category_tree as tree_categories %}
-                {% if tree_categories %}
-                <ul>
-                    {% for tree_category in tree_categories %}
-                    {% if tree_category.depth == 1 %}
-                    <li class="dropdown-holder">
-                        <a href="{{ tree_category.url }}">
-                            {% if tree_category.pk == category.pk %}
-                            <strong>{{ tree_category.name }}</strong>
-                            {% else %}
-                            {{ tree_category.name }}
-                            {% endif %}
-                        </a>
-                        {% elif tree_category.depth == 2 %}
-                    <li class="sub-dropdown-holder">
-                        <a href="{{ tree_category.url }}">
-                            {% if tree_category.pk == category.pk %}
-                            <strong>{{ tree_category.name }}</strong>
-                            {% else %}
-                            {{ tree_category.name }}
-                            {% endif %}
-                        </a>
-                        {% else %}
-                    <li>
-                        <a href="{{ tree_category.url }}">
-                            {% if tree_category.pk == category.pk %}
-                            <strong>{{ tree_category.name }}</strong>
-                            {% else %}
-                            {{ tree_category.name }}
-                            {% endif %}
-                        </a>
-                        {% endif %}
-                        {% if tree_category.has_children %}
-                        {% if tree_category.depth == 1 %}
-                        <ul class="hb-dropdown">
-                            {% elif tree_category.depth == 2 %}
-                            <ul class="hb-dropdown hb-sub-dropdown">
-                                {% endif %}
-                                {% endif %}
-                                {% for n in tree_category.num_to_close %}
-                            </ul>
-                    </li>
-                    {% endfor %}
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-        </div>
-      </div>
-    </div>
+                {% if tree_category.has_children %}<ul class="submenu dropdown-menu">{% else %}</li>{% endif %}
+                {% for n in tree_category.num_to_close %}
+                    </ul></li>
+                {% endfor %}
+        {% endfor %}
+        </ul>
+    </li>
+</ul>
 </div>
+</nav>
+{% endif %} -->
 
 {% if has_facets %}
 <h4>{% trans "Refine by" %}</h4>

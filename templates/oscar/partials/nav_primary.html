@@ -30,30 +30,43 @@
     {% block navbar_collapse %}
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {% block nav %}
-                <ul class="navbar-nav mr-auto">
-                    {% block nav_items %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                {% block browse_store_text %}{% trans "Browse store" %}{% endblock %}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% category_tree depth=1 as tree_categories %}
-                                <a class="dropdown-item" href="{% url 'catalogue:index' %}">{% trans "All products" %}</a>
-                                {% if tree_categories %}
-                                    <div class="dropdown-divider"></div>
-                                    {% for tree_category in tree_categories %}
-                                        <a class="dropdown-item" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>
-                                    {% endfor %}
+
+            {% category_tree as tree_categories %}
+            {% if tree_categories %}
+            <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
+                    <span class="navbar-toggler-icon"></span>
+                </button> -->
+                <!-- <div class="collapse navbar-collapse" id="main_nav"> -->
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                        {% block browse_store_text %}{% trans "Browse store" %}{% endblock %}
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for tree_category in tree_categories %}
+                        <li>
+                            <a href="{{ tree_category.url }}" class="dropdown-item" style="color:black;font-weight:bold;">
+                                {% if tree_category.pk == category.pk %}
+                                    <strong>{{ tree_category.name }}</strong>
+                                {% else %}
+                                    {{ tree_category.name }}
                                 {% endif %}
-                                <div class="dropdown-divider"></div>
-                                {% block nav_dropdown_extra_items %}
-                                    <a class="dropdown-item" href="{% url 'offer:list' %}">{% trans "Offers" %}</a>
-                                {% endblock %}
-                            </div>
-                        </li>
-                   {% endblock %}
-               </ul>
+                            </a>
+            
+                            {% if tree_category.has_children %}<ul class="submenu dropdown-menu">{% else %}</li>{% endif %}
+                            {% for n in tree_category.num_to_close %}
+                                </ul></li>
+                            {% endfor %}
+                    {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+            <!-- </div> -->
+            <!-- </nav> -->
+            {% endif %}
+
             {% endblock %}
 
             {% block nav_extra %}

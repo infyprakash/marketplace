@@ -25,7 +25,7 @@ access key : AKIA47ZNMRCTP66GBMEL
 
 superuser:
 username: infography
-email: infymee@gmail.com 
+email: infographytech9@gmail.com
 password: Inf0gr@PHY200ADm1n
 
 
@@ -167,3 +167,6 @@ koseli ghar ko
     </script>
 
 
+for c in Country.objects.all():
+    ...:     if(c.code!='NP'):
+    ...:         c.delete()
