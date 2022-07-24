@@ -1,3 +1,4 @@
+
 {% extends "oscar/base.html" %}
 {% load static %}
 
@@ -16,11 +17,35 @@
 	    border-right: 0;
 	    border-bottom: .3em solid transparent;
 	    border-left: .3em solid;
-        overflow-y:auto ;
 	}
+    .dropdown-item {
+  position: relative;
+}
 	.dropdown-menu .dropdown-menu{
 		margin-left:0; margin-right: 0;
 	}
+    .dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+}
+
+.dropdown-menu>li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu>li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-submenu>a:after {
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900;
+  content: "\f054" !important;
+  border: none;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
 	.dropdown-menu li{
 		position: relative;
 	}
