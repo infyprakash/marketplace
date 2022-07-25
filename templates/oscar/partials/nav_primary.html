@@ -1,4 +1,3 @@
-
 {% load currency_filters %}
 {% load category_tags %}
 {% load i18n %}
@@ -34,38 +33,32 @@
 
             {% category_tree as tree_categories %}
             {% if tree_categories %}
-            <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
-                    <span class="navbar-toggler-icon"></span>
-                </button> -->
-                <!-- <div class="collapse navbar-collapse" id="main_nav"> -->
-            <ul class="navbar-nav " >
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                        <i class="fa fa-bars" aria-hidden="true"></i>
-                        {% block browse_store_text %}{% trans "Browse store" %}{% endblock %}
-                    </a>
-                    <ul class="dropdown-menu">
-                        {% for tree_category in tree_categories %}
-                        <li>
-                            <a href="{{ tree_category.url }}" class="dropdown-item" style="color:#0b6bd3;">
-                                {% if tree_category.pk == category.pk %}
-                                    <strong>{{ tree_category.name }}</strong>
-                                {% else %}
-                                    {{ tree_category.name }}
-                                {% endif %}
-                            </a>
+            <!-- <div class="collapse navbar-collapse"> -->
+                <ul class="nav navbar-nav pr-2">
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            {% block browse_store_text %}{% trans "Browse store" %}{% endblock %}
+                        </a>
+                        <ul class="dropdown-menu multi-level">
+                            {% for tree_category in tree_categories %}
             
-                            {% if tree_category.has_children %}<ul class="submenu dropdown-menu" >{% else %}</li>{% endif %}
+                            {% if tree_category.has_children %}
+                            <li class="dropdown-submenu">
+                                <a href="{{ tree_category.url }}"class="dropdown-toggle" data-toggle="dropdown">{{ tree_category.name }}</a>
+                                <ul class="dropdown-menu">
+                            {% else %}
+                            <li><a href="{{ tree_category.url }}"class="dropdown-toggle" data-toggle="dropdown">{{ tree_category.name }}</a></li>
+                            {% endif %}
                             {% for n in tree_category.num_to_close %}
-                                </ul></li>
+                                </ul>
                             {% endfor %}
-                    {% endfor %}
-                    </ul>
-                </li>
-            </ul>
-            <!-- </div> -->
-            <!-- </nav> -->
+                            {% endfor %}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
             {% endif %}
 
             {% endblock %}
