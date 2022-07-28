@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from distutils.debug import DEBUG
 from pathlib import Path
 from oscar.defaults import *
 import os
@@ -29,7 +30,7 @@ SECRET_KEY = os.environ.get(
     'django-insecure-@5isnv5dqm$nugv-o=jkr$u7-ldrw)w7^cyfa1+pl)d=i75f!b'
 )
 
-DEBUG = os.environ.get('DJANGO_DEBUG', '1').lower() in ['true', 't', '1']
+# DEBUG = os.environ.get('DJANGO_DEBUG', '1').lower() in ['true', 't', '1']
 
 # SECRET_KEY = 'django-insecure-@5isnv5dqm$nugv-o=jkr$u7-ldrw)w7^cyfa1+pl)d=i75f!b'
 
@@ -160,6 +161,8 @@ if 'RDS_DB_NAME' in os.environ:
             'PORT': os.environ['RDS_PORT'],
         }
     }
+    DEBUG = False
+
 else:
     DATABASES = {
     'default': {
@@ -167,6 +170,7 @@ else:
         'NAME': BASE_DIR / 'db.sqlite3',
     }
     }
+    DEBUG = True
     # DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql', 
