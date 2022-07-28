@@ -97,6 +97,15 @@
     <script>
         $(function () {
             {% block onbodyload %} {% endblock %}
+            
+            $('.product-title').map(function(){
+    var str = $(this).html().trim();
+    console.log(str.trim());
+    <!-- var str = "Hello world!"; -->
+    var res =  str.length>15 ? str.substring(0,17)+'&hellip;':str;
+    $(this).html(res);
+
+});
         });
     </script>
 
