@@ -1,3 +1,5 @@
+
+
 {% extends 'oscar/dashboard/layout.html' %}
 {% load i18n %}
 
@@ -219,7 +221,7 @@
                                         {{ stockrecord_formset.management_form }}
                                         {{ stockrecord_formset.non_form_errors }}
                                         <thead>
-                                            <tr>
+                                            <!-- <tr>
                                                 <th>{% trans "Partner" %}</th>
                                                 <th>{% trans "SKU" %}</th>
                                                 {% if product_class.track_stock %}
@@ -230,7 +232,7 @@
                                                 <th>{% trans "Currency" %}</th>
                                                 <th>{% trans "Price" %}</th>
                                                 <th>{% trans "Delete?" %}</th>
-                                            </tr>
+                                            </tr> -->
                                         </thead>
                                         <tbody>
                                             {% for stockrecord_form in stockrecord_formset %}
@@ -244,20 +246,48 @@
                                                 </tr>
                                                 {% endif %}
                                                 <tr>
+                                                    <th>{% trans "Partner" %}</th>
                                                     <td>{% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.partner nolabel=True %}</td>
-                                                    <td>{% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.partner_sku nolabel=True %}</td>
-                                                    {% if product_class.track_stock %}
-                                                        <td>{% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.num_in_stock nolabel=True %}</td>
-                                                        <td>{{ stockrecord_form.instance.num_allocated|default:"-" }}</td>
-                                                        <td>{% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.low_stock_threshold nolabel=True %}</td>
-                                                    {% endif %}
-                                                    <td>{% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.price_currency nolabel=True %}</td>
-                                                    <td>{% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.price nolabel=True %}</td>
-                                                    <td>
-                                                        {% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.id nolabel=True %}
-                                                        {% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.DELETE nolabel=True %}
-                                                    </td>
                                                 </tr>
+                                                <tr>
+                                                    <th>{% trans "SKU" %}</th>
+                                                    <td>{% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.partner_sku nolabel=True %}</td>
+                                                </tr>
+                                                    
+                                                    {% if product_class.track_stock %}
+                                                        <tr>
+                                                            <th>{% trans "Num in stock" %}</th>
+                                                            <td>{% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.num_in_stock nolabel=True %}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>{% trans "Num allocated" %}</th>
+                                                            <td>{{ stockrecord_form.instance.num_allocated|default:"-" }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>{% trans "Low stock threshold" %}</th>
+                                                            <td>{% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.low_stock_threshold nolabel=True %}</td>
+                                                        </tr>
+                                                    {% endif %}
+                                                    <tr>
+                                                        <th>{% trans "Currency" %}</th>
+                                                        <!-- <td>{{stockrecord_form.instance.price_currency|default:"NRs"}}</td> -->
+
+                                                        <td>{% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.price_currency nolabel=True %}
+                                                            <span style="color: red;font-weight:bold">do not modify this field</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{% trans "Price" %}</th>
+                                                        <td>{% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.price nolabel=True %}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>{% trans "Delete?" %}</th>
+                                                        <td>
+                                                            
+                                                            {% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.id nolabel=True %}
+                                                            {% include "oscar/dashboard/partials/form_field.html" with field=stockrecord_form.DELETE nolabel=True %}
+                                                        </td>
+                                                    </tr>
                                             {% endfor %}
                                         </tbody>
                                     </table>
