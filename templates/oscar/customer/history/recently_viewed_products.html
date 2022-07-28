@@ -7,10 +7,14 @@
             <h2>{% trans 'Products you recently viewed' %}</h2>
         </div>
 
-        <ul class="row list-unstyled mx-0">
+
+
+        <div class="d-flex flex-row justify-content-start flex-wrap">
+            <!-- <ol class="row list-unstyled ml-0 pl-0"> -->
             {% for product in products_sliced %}
-                <li class="col-sm-4 col-md-3 col-lg-3">{% render_product product %}</li>
+            {% render_product product %}
             {% endfor %}
-        </ul>
+        </div>
+
     {% endif %}
 {% endwith %}
