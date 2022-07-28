@@ -66,8 +66,7 @@
     <p id="profileImage" class="card-text"></p>
     <h2 class="card-title" id="firstName">{{partner.name}}</h2>
     <hr>
-    <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-width="" data-layout="standard"
-        data-action="like" data-size="large" data-share="true"></div>
+        <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
     <hr>
     <ul class="nav nav-list flex-column">
         <li class="mt-2">visit us at: <a href="/at/{{partner.code}}">{{partner.name}}</a></li>

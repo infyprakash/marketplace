@@ -1,4 +1,3 @@
-
 {% extends "oscar/layout.html" %}
 
 {% load history_tags %}
@@ -71,8 +70,8 @@
             {% endif %}
             <h1 style="color: black;">{{ product.get_title }}</h1>
 
-            <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-width="100%" data-layout="standard"
-                data-action="like" data-size="large" data-share="true"></div>
+            <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-width="" data-layout="button_count"
+                data-action="like" data-size="small" data-share="true"></div>
             <hr>
             product of: <a href="/at/{% render_partner product %}">{% render_partner_name product %}</a>
 
