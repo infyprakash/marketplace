@@ -17,10 +17,10 @@ class AddToBasketForm(AddToBasketFormCore):
 class SimpleAddToBasketMixin:
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for av in self.product.attributes.all():
+        for av in self.product.attribute_values.all():
 
-            self.fields[av.option_group.name] = forms.ChoiceField(
-                choices=self.get_choices(av.option_group.options.all()),
+            self.fields[av.attribute.name] = forms.ChoiceField(
+                choices=self.get_choices(av.value),
                 required=False,
                 # widget=forms.RadioSelect,
                 # help_text=av.attribute.name
@@ -34,6 +34,7 @@ class SimpleAddToBasketMixin:
         p = []
         q = []
         for option in av:
+            print(option)
             # print(type(option))
             p.append(option.option)
             q.append(option.option)
