@@ -15,6 +15,7 @@
 {{ summary }}
 {% endblock %}
 
+
 {% block breadcrumbs %}
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -125,4 +126,14 @@
 {% block onbodyload %}
 {{ block.super }}
 oscar.search.init();
+
+$('.product-title').map(function(){
+    var str = $(this).html().trim();
+    console.log(str.trim());
+    <!-- var str = "Hello world!"; -->
+    var res =  str.length>20 ? str.substring(0,20)+'&hellip;':str;
+    $(this).html(res);
+
+});
+
 {% endblock %}
