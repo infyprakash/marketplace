@@ -11,6 +11,16 @@
     <meta name="description" content="{% block description %}{% endblock %}" />
     <meta name="viewport" content="{% block viewport %}width=device-width{% endblock %}" />
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RR2ZYT8KGF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-RR2ZYT8KGF');
+    </script>
+
     {% block favicon %}
     <!-- <link rel="shortcut icon" href="{% static "oscar/favicon.ico" %}" /> -->
     {% endblock %}
@@ -32,12 +42,15 @@
             padding: 0%;
             background-color: white;
         }
-        .breadcrumb-item.active{
+
+        .breadcrumb-item.active {
             color: red;
         }
-        .price_color{
+
+        .price_color {
             color: red;
         }
+
         .breadcrumb .breadcrumb-item:nth-child(2)::before {
             content: "\3E";
         }
@@ -49,15 +62,16 @@
             text-decoration: none;
             color: #0b6bd3;
         }
+
         .btn:hover,
         .btn:focus,
-        .btn:active
-        {
+        .btn:active {
             color: white;
         }
-        .btn{
+
+        .btn {
             background-color: #0b6bd3;
-            color: white;            
+            color: white;
         }
     </style>
     {% endblock %}
@@ -97,15 +111,15 @@
     <script>
         $(function () {
             {% block onbodyload %} {% endblock %}
-            
-            $('.product-title').map(function(){
-    var str = $(this).html().trim();
-    console.log(str.trim());
-    <!-- var str = "Hello world!"; -->
-    var res =  str.length>15 ? str.substring(0,17)+'&hellip;':str;
-    $(this).html(res);
 
-});
+            $('.product-title').map(function () {
+                var str = $(this).html().trim();
+                console.log(str.trim());
+    < !-- var str = "Hello world!"; -->
+    var res = str.length > 15 ? str.substring(0, 17) + '&hellip;' : str;
+                $(this).html(res);
+
+            });
         });
     </script>
 
