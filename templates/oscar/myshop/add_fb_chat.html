@@ -24,7 +24,7 @@
         <div class="col-sm-6 login_form">
             <form id="login_form" action="{{ request.get_full_path }}" method="post" class="card card-body bg-light" >
                 <h5>{% trans 'Add Facebook messenger chat plugins code ' %}</h5>
-                <p>follow the steps in given <a href="https://developers.facebook.com/docs/messenger-platform/discovery/facebook-chat-plugin/">link</a> to get code </p>
+                <p>follow the steps in given <a href="https://developers.facebook.com/docs/messenger-platform/discovery/facebook-chat-plugin/" style="color:red;">link</a> to get code </p>
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">code</label>
