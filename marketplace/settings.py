@@ -284,3 +284,5 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "infymee@gmail.com"
 EMAIL_HOST_PASSWORD = "zmprpevzothmuciz"
+
+# ACCOUNT_EMAIL_VERIFICATION = "mandatory"
