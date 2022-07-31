@@ -14,11 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.apps import apps
-from django.urls import include, path
+from django.urls import include, path,re_path
 from django.contrib import admin
 
 from django.conf import settings
 from django.conf.urls.static import static
+from myapps.customer.views import activate
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
@@ -30,7 +31,9 @@ urlpatterns = [
 
     path('', include(apps.get_app_config('oscar').urls[0])),
     path('dashboard/partner/',include('dashboard.urls',namespace='dashboard-partner')),
-    path('at/',include('myshop.urls',namespace='myshop'))
+    path('at/',include('myshop.urls',namespace='myshop')),
+    path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/',  
+        activate, name='activate'),
 ]
 
 if settings.DEBUG:
