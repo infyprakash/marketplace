@@ -27,7 +27,7 @@ class RegisterUserMixin(RegisterUserMixinCore):
         mail_subject = 'Activation link has been sent to your email id'  
         message = render_to_string('acc_active_email.html', {  
                 'user': user,  
-                'domain': current_site.domain,  
+                'domain': self.request.get_host(),  
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)),  
                 'token':account_activation_token.make_token(user),
                 })
