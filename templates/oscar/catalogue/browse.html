@@ -121,16 +121,10 @@
 <p class="nonefound">{% trans "No products found." %}</p>
 {% endif %}
 
-{% endblock content %}
-
-{% block onbodyload %}
-{{ block.super }}
-oscar.search.init();
-
-
+<!-- Messenger Chat Plugin Code -->
 <div id="fb-root"></div>
 
-
+<!-- Your Chat Plugin code -->
 <div id="fb-customer-chat" class="fb-customerchat">
 </div>
 
@@ -140,7 +134,7 @@ oscar.search.init();
   chatbox.setAttribute("attribution", "biz_inbox");
 </script>
 
-
+<!-- Your SDK code -->
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -157,5 +151,14 @@ oscar.search.init();
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
+
+
+{% endblock content %}
+
+{% block onbodyload %}
+{{ block.super }}
+oscar.search.init();
+
+
 
 {% endblock %}
