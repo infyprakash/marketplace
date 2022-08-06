@@ -263,7 +263,7 @@ OSCAR_ORDER_STATUS_PIPELINE = {
 
 OSCAR_SHOP_NAME = "connect-O-pasal"
 
-OSCAR_MISSING_IMAGE_URL = 'image_not_found.jpg'
+OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
 
 if 'AWS_STORAGE_BUCKET_NAME' in os.environ:
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
@@ -274,6 +274,7 @@ if 'AWS_STORAGE_BUCKET_NAME' in os.environ:
 
     AWS_S3_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_S3_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
 
 
 
