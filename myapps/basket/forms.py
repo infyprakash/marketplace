@@ -13,13 +13,14 @@ Product = get_model('catalogue', 'product')
 class AddToBasketForm(AddToBasketFormCore):
     pass
 
+from django.db.models.query import QuerySet
 
 class SimpleAddToBasketMixin:
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for av in self.product.attribute_values.all():
-
-            self.fields[av.attribute.name] = forms.ChoiceField(
+            if isinstance(av.value,QuerySet):
+                self.fields[av.attribute.name] = forms.ChoiceField(
                 choices=self.get_choices(av.value),
                 required=False,
                 # widget=forms.RadioSelect,
