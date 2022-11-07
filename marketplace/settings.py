@@ -35,7 +35,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-ALLOWED_HOSTS = ['marketplace-dev.us-west-2.elasticbeanstalk.com','127.0.0.1','connectopasal.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
